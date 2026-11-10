@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+</head>
+<body>
+<div class="canvas">
+  <div class="fig-head">
+    <div>
+      <span class="no">FIG. 03</span>
+      <h1>E-R 图（实体—联系）</h1>
+    </div>
+    <p class="note">
+      核心链路：讲师 1—N 课程，课程 1—1 简介、1—N 章节、1—N 小节；分类自关联成两级。<br>
+      右侧四张为独立实体，不参与课程聚合。
+    </p>
+  </div>
+
+  <svg viewBox="0 150 1448 1060" width="1448" height="1060" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="foot" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+        <path d="M1,6 L11,1 M1,6 L11,11 M1,6 L11,6" stroke="#6f7a70" stroke-width="1.1"/>
+      </marker>
+      <marker id="one" markerWidth="12" markerHeight="12" refX="1" refY="6" orient="auto">
+        <path d="M6,1 L6,11" stroke="#6f7a70" stroke-width="1.4"/>
+      </marker>
+      <style>
+        .hdr { fill: #f2f6f3; }
+        .box { fill: #ffffff; stroke: #a8a294; stroke-width: 1.1; }
+        .pk { fill: #fdf7ea; }
+        .fk { fill: #b5761a; }
+        .tbl { font-family: Consolas, monospace; font-size: 12.5px; fill: #17201a; }
+        .fld { font-family: Consolas, monospace; font-size: 11px; fill: #3c463d; }
+        .cmt { font-size: 10.5px; fill: #6f7a70; }
+        .tag { font-family: Consolas, monospace; font-size: 9px; fill: #b5761a; }
+        .rel { font-size: 11px; fill: #6f7a70; }
+      </style>
+    </defs>
+
+    <!-- ==================== edu_teacher ==================== -->
+    <g>
+      <rect class="box" x="40" y="200" width="300" height="232"/>
+      <rect class="hdr" x="40" y="200" width="300" height="34"/>
+      <text x="52" y="222" class="tbl">edu_teacher</text>
+      <text x="328" y="222" text-anchor="end" class="cmt">讲师</text>
+
+      <text x="52" y="256" class="fld">id</text><text x="78" y="256" class="tag">PK</text><text x="328" y="256" text-anchor="end" class="cmt">主键</text>
+      <text x="52" y="278" class="fld">name</text><text x="328" y="278" text-anchor="end" class="cmt">姓名</text>
+      <text x="52" y="300" class="fld">career</text><text x="328" y="300" text-anchor="end" class="cmt">资历</text>
+      <text x="52" y="322" class="fld">intro</text><text x="328" y="322" text-anchor="end" class="cmt">简介</text>
+      <text x="52" y="344" class="fld">level</text><text x="328" y="344" text-anchor="end" class="cmt">1 讲师 / 2 高级</text>
+      <text x="52" y="366" class="fld">avatar</text><text x="328" y="366" text-anchor="end" class="cmt">头像 URL</text>
+      <text x="52" y="388" class="fld">sort</text><text x="328" y="388" text-anchor="end" class="cmt">排序</text>
+      <text x="52" y="410" class="fld">gmt_create</text><text x="328" y="410" text-anchor="end" class="cmt">创建时间</text>
+      <text x="52" y="432" class="fld">is_deleted</text><text x="328" y="432" text-anchor="end" class="cmt">逻辑删除</text>
+    </g>
+
+    <!-- ==================== edu_course ==================== -->
+    <g>
+      <rect class="box" x="430" y="200" width="300" height="298" stroke="#123a2c" stroke-width="1.6"/>
+      <rect class="hdr" x="430" y="200" width="300" height="34" fill="#e7ede8"/>
+      <text x="442" y="222" class="tbl" font-weight="600">edu_course</text>
+      <text x="718" y="222" text-anchor="end" class="cmt">课程（核心）</text>
+
+      <text x="442" y="256" class="fld">id</text><text x="468" y="256" class="tag">PK</text><text x="718" y="256" text-anchor="end" class="cmt">主键</text>
+      <text x="442" y="278" class="fld">teacher_id</text><text x="510" y="278" class="tag">FK</text><text x="718" y="278" text-anchor="end" class="cmt">讲师</text>
+      <text x="442" y="300" class="fld">subject_id</text><text x="510" y="300" class="tag">FK</text><text x="718" y="300" text-anchor="end" class="cmt">二级分类</text>
+      <text x="442" y="322" class="fld">subject_parent_id</text><text x="552" y="322" class="tag">FK</text><text x="718" y="322" text-anchor="end" class="cmt">一级分类</text>
+      <text x="442" y="344" class="fld">title</text><text x="718" y="344" text-anchor="end" class="cmt">课程标题</text>
+      <text x="442" y="366" class="fld">price</text><text x="718" y="366" text-anchor="end" class="cmt">价格</text>
+      <text x="442" y="388" class="fld">lesson_num</text><text x="718" y="388" text-anchor="end" class="cmt">课时数</text>
+      <text x="442" y="410" class="fld">cover</text><text x="718" y="410" text-anchor="end" class="cmt">封面 URL</text>
+      <text x="442" y="432" class="fld">status</text><text x="718" y="432" text-anchor="end" class="cmt">0 未发布 / 1 已发布</text>
+      <text x="442" y="454" class="fld">buy_count</text><text x="718" y="454" text-anchor="end" class="cmt">购买数</text>
+      <text x="442" y="476" class="fld">view_count</text><text x="718" y="476" text-anchor="end" class="cmt">浏览数</text>
+      <text x="442" y="498" class="fld">gmt_create</text><text x="718" y="498" text-anchor="end" class="cmt">创建时间</text>
+    </g>
+
+    <!-- ==================== edu_subject ==================== -->
+    <g>
+      <rect class="box" x="820" y="200" width="300" height="122"/>
+      <rect class="hdr" x="820" y="200" width="300" height="34"/>
+      <text x="832" y="222" class="tbl">edu_subject</text>
+      <text x="1108" y="222" text-anchor="end" class="cmt">课程分类（两级）</text>
+
+      <text x="832" y="256" class="fld">id</text><text x="858" y="256" class="tag">PK</text><text x="1108" y="256" text-anchor="end" class="cmt">主键</text>
+      <text x="832" y="278" class="fld">title</text><text x="1108" y="278" text-anchor="end" class="cmt">分类名</text>
+      <text x="832" y="300" class="fld">parent_id</text><text x="900" y="300" class="tag">FK</text><text x="1108" y="300" text-anchor="end" class="cmt">0 = 一级</text>
+      <text x="832" y="322" class="fld">sort</text><text x="1108" y="322" text-anchor="end" class="cmt">排序</text>
+    </g>
+
+    <!-- ==================== edu_course_description ==================== -->
+    <g>
+      <rect class="box" x="430" y="600" width="300" height="100"/>
+      <rect class="hdr" x="430" y="600" width="300" height="34"/>
+      <text x="442" y="622" class="tbl">edu_course_description</text>
+      <text x="718" y="622" text-anchor="end" class="cmt">课程简介</text>
+
+      <text x="442" y="656" class="fld">id</text><text x="468" y="656" class="tag">PK</text><text x="718" y="656" text-anchor="end" class="cmt">主键</text>
+      <text x="442" y="678" class="fld">course_id</text><text x="510" y="678" class="tag">FK</text><text x="718" y="678" text-anchor="end" class="cmt">课程（1:1）</text>
+      <text x="442" y="700" class="fld">description</text><text x="718" y="700" text-anchor="end" class="cmt">长文本</text>
+    </g>
+
+    <!-- ==================== edu_chapter ==================== -->
+    <g>
+      <rect class="box" x="820" y="600" width="300" height="122"/>
+      <rect class="hdr" x="820" y="600" width="300" height="34"/>
+      <text x="832" y="622" class="tbl">edu_chapter</text>
+      <text x="1108" y="622" text-anchor="end" class="cmt">章节</text>
+
+      <text x="832" y="656" class="fld">id</text><text x="858" y="656" class="tag">PK</text><text x="1108" y="656" text-anchor="end" class="cmt">主键</text>
+      <text x="832" y="678" class="fld">course_id</text><text x="900" y="678" class="tag">FK</text><text x="1108" y="678" text-anchor="end" class="cmt">课程</text>
+      <text x="832" y="700" class="fld">title</text><text x="1108" y="700" text-anchor="end" class="cmt">章节标题</text>
+      <text x="832" y="722" class="fld">sort</text><text x="1108" y="722" text-anchor="end" class="cmt">排序</text>
+    </g>
+
+    <!-- ==================== edu_section ==================== -->
+    <g>
+      <rect class="box" x="820" y="780" width="300" height="166"/>
+      <rect class="hdr" x="820" y="780" width="300" height="34"/>
+      <text x="832" y="802" class="tbl">edu_section</text>
+      <text x="1108" y="802" text-anchor="end" class="cmt">小节</text>
+
+      <text x="832" y="836" class="fld">id</text><text x="858" y="836" class="tag">PK</text><text x="1108" y="836" text-anchor="end" class="cmt">主键</text>
+      <text x="832" y="858" class="fld">course_id</text><text x="900" y="858" class="tag">FK</text><text x="1108" y="858" text-anchor="end" class="cmt">课程（冗余，便于按课查询）</text>
+      <text x="832" y="880" class="fld">chapter_id</text><text x="908" y="880" class="tag">FK</text><text x="1108" y="880" text-anchor="end" class="cmt">章节</text>
+      <text x="832" y="902" class="fld">title</text><text x="1108" y="902" text-anchor="end" class="cmt">小节标题</text>
+      <text x="832" y="924" class="fld">duration</text><text x="1108" y="924" text-anchor="end" class="cmt">时长</text>
+      <text x="832" y="946" class="fld">sort</text><text x="1108" y="946" text-anchor="end" class="cmt">排序</text>
+    </g>
+
+    <!-- ==================== 关系连线 ==================== -->
+    <g stroke="#6f7a70" stroke-width="1.1">
+      <!-- 讲师 1 — N 课程 -->
+      <path d="M340,316 L430,316" marker-start="url(#one)" marker-end="url(#foot)"/>
+      <!-- 分类 1 — N 课程 -->
+      <path d="M820,300 L730,300" marker-start="url(#one)" marker-end="url(#foot)"/>
+      <!-- 课程 1 — 1 简介 -->
+      <path d="M580,498 L580,600" marker-start="url(#one)" marker-end="url(#one)"/>
+      <!-- 课程 1 — N 章节 -->
+      <path d="M730,440 L775,440 L775,650 L820,650" marker-start="url(#one)" marker-end="url(#foot)"/>
+      <!-- 章节 1 — N 小节 -->
+      <path d="M970,722 L970,780" marker-start="url(#one)" marker-end="url(#foot)"/>
+    </g>
+
+    <!-- 分类自关联 -->
+    <path d="M1120,250 L1176,250 L1176,172 L1058,172 L1058,200" stroke="#6f7a70" stroke-width="1.1"
+          marker-start="url(#one)" marker-end="url(#foot)"/>
+
+    <!-- 关系标签 -->
+    <text x="372" y="308" text-anchor="middle" class="rel">主讲</text>
+    <text x="775" y="292" text-anchor="middle" class="rel">归属</text>
+    <text x="592" y="556" class="rel">1 : 1</text>
+    <text x="784" y="530" class="rel" transform="rotate(90 784 530)">1 : N</text>
+    <text x="982" y="755" class="rel">1 : N</text>
+    <text x="1184" y="216" class="rel">1 : N</text>
+
+    <!-- ==================== 独立实体 ==================== -->
+    <text x="40" y="1000" class="t-label">独立实体 · 不与课程聚合，单独维护</text>
+
+    <g>
+      <rect class="box" x="40" y="1010" width="300" height="188"/>
+      <rect class="hdr" x="40" y="1010" width="300" height="34"/>
+      <text x="52" y="1032" class="tbl">sys_user</text>
+      <text x="328" y="1032" text-anchor="end" class="cmt">后台账号</text>
+      <text x="52" y="1066" class="fld">id</text><text x="328" y="1066" text-anchor="end" class="cmt">主键</text>
+      <text x="52" y="1088" class="fld">username</text><text x="328" y="1088" text-anchor="end" class="cmt">登录账号</text>
+      <text x="52" y="1110" class="fld">password</text><text x="328" y="1110" text-anchor="end" class="cmt">BCrypt 摘要</text>
+      <text x="52" y="1132" class="fld">nickname</text><text x="328" y="1132" text-anchor="end" class="cmt">昵称</text>
+      <text x="52" y="1154" class="fld">avatar</text><text x="328" y="1154" text-anchor="end" class="cmt">头像 URL</text>
+      <text x="52" y="1176" class="fld">is_deleted</text><text x="328" y="1176" text-anchor="end" class="cmt">逻辑删除</text>
+    </g>
+
+    <g>
+      <rect class="box" x="370" y="1010" width="300" height="188"/>
+      <rect class="hdr" x="370" y="1010" width="300" height="34"/>
+      <text x="382" y="1032" class="tbl">ucenter_member</text>
+      <text x="658" y="1032" text-anchor="end" class="cmt">前台学员</text>
+      <text x="382" y="1066" class="fld">id</text><text x="658" y="1066" text-anchor="end" class="cmt">主键</text>
+      <text x="382" y="1088" class="fld">mobile</text><text x="658" y="1088" text-anchor="end" class="cmt">手机号（唯一）</text>
+      <text x="382" y="1110" class="fld">password</text><text x="658" y="1110" text-anchor="end" class="cmt">BCrypt 摘要</text>
+      <text x="382" y="1132" class="fld">nickname</text><text x="658" y="1132" text-anchor="end" class="cmt">昵称</text>
+      <text x="382" y="1154" class="fld">avatar</text><text x="658" y="1154" text-anchor="end" class="cmt">头像 URL</text>
+      <text x="382" y="1176" class="fld">gmt_create</text><text x="658" y="1176" text-anchor="end" class="cmt">注册时间</text>
+    </g>
+
+    <g>
+      <rect class="box" x="700" y="1010" width="300" height="188"/>
+      <rect class="hdr" x="700" y="1010" width="300" height="34"/>
+      <text x="712" y="1032" class="tbl">crm_banner</text>
+      <text x="988" y="1032" text-anchor="end" class="cmt">首页轮播</text>
+      <text x="712" y="1066" class="fld">id</text><text x="988" y="1066" text-anchor="end" class="cmt">主键</text>
+      <text x="712" y="1088" class="fld">title</text><text x="988" y="1088" text-anchor="end" class="cmt">标题</text>
+      <text x="712" y="1110" class="fld">image_url</text><text x="988" y="1110" text-anchor="end" class="cmt">图片 URL</text>
+      <text x="712" y="1132" class="fld">link_url</text><text x="988" y="1132" text-anchor="end" class="cmt">跳转链接</text>
+      <text x="712" y="1154" class="fld">sort</text><text x="988" y="1154" text-anchor="end" class="cmt">排序</text>
+      <text x="712" y="1176" class="fld">is_deleted</text><text x="988" y="1176" text-anchor="end" class="cmt">逻辑删除</text>
+    </g>
+
+    <g>
+      <rect class="box" x="1030" y="1010" width="300" height="188"/>
+      <rect class="hdr" x="1030" y="1010" width="300" height="34"/>
+      <text x="1042" y="1032" class="tbl">sys_login_log</text>
+      <text x="1318" y="1032" text-anchor="end" class="cmt">登录日志</text>
+      <text x="1042" y="1066" class="fld">id</text><text x="1318" y="1066" text-anchor="end" class="cmt">主键</text>
+      <text x="1042" y="1088" class="fld">username</text><text x="1318" y="1088" text-anchor="end" class="cmt">账号</text>
+      <text x="1042" y="1110" class="fld">user_type</text><text x="1318" y="1110" text-anchor="end" class="cmt">admin / member</text>
+      <text x="1042" y="1132" class="fld">ip</text><text x="1318" y="1132" text-anchor="end" class="cmt">来源 IP</text>
+      <text x="1042" y="1154" class="fld">success</text><text x="1318" y="1154" text-anchor="end" class="cmt">0 失败 / 1 成功</text>
+      <text x="1042" y="1176" class="fld">login_time</text><text x="1318" y="1176" text-anchor="end" class="cmt">登录时间</text>
+    </g>
+  </svg>
+
+  <div class="legend">
+    <span>PK = 主键，FK = 外键</span>
+    <span>=| 一端，&lt; 多端（鸦爪）</span>
+    <span>edu_section.course_id 为冗余外键，用于按课程直接取全部小节，减少一次 JOIN</span>
+  </div>
+</div>
+</body>
+</html>

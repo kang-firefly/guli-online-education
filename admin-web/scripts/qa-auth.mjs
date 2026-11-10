@@ -1,0 +1,17 @@
+import puppeteer from 'puppeteer-core'
+const sleep = (ms) => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: 'C://Program Files\\Google\\Chrome\\Application\\chrome.exe', headless: 'new', args: ['--no-sandbox'] })
+const p = await b.newPage()
+await p.setViewport({ width: 1440, height: 900 })
+p.on('pageerror', e => console.log('[pageerror]', e.message))
+await p.goto('http://127.0.0.1:5173/login', { waitUntil: 'networkidle2' })
+await p.evaluate(() => localStorage.clear())
+await p.reload({ waitUntil: 'networkidle2' })
+await p.type('input[autocomplete="password"]', 'admin123', { delay: 15 }).catch(async () => {
+  await p.click('input[type="password"]'); await p.type('input[type="password"]', 'admin123', { delay: 15 })
+})
+await p.click('button[type="submit"]')
+await sleep(2200)
+console.log('url =', p.url())
+console.log('topbar user =', await p.evaluate(() => document.querySelector('.user')?.innerText.replace(/\n/g,' ') || 'NOT FOUND'))
+await b.close()

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .canvas { width: 1180px; }
+  .hint { font-size: 12.5px; color: #6f7a70; background: #fdf7ea; border: 1px solid #e3d6bb;
+           padding: 10px 14px; margin-bottom: 26px; line-height: 1.8; }
+  .tbl-block { margin-bottom: 26px; break-inside: avoid; }
+  .tbl-block h3 { font-family: 'Serif SC', serif; font-size: 15px; font-weight: 600;
+                   color: #17201a; margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; }
+  .tbl-block h3 .idx { font-size: 10.5px; color: #b5761a; letter-spacing: 0.12em; }
+  .tbl-block h3 em { font-style: normal; font-size: 12px; color: #6f7a70; font-weight: 400; }
+  table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  th { text-align: left; font-weight: 600; color: #6f7a70; font-size: 10.5px;
+        letter-spacing: 0.08em; padding: 6px 8px; border-bottom: 1.2px solid #a8a294; }
+  td { padding: 5px 8px; border-bottom: 1px solid #e0dacd; color: #3c463d; vertical-align: top; }
+  code { font-family: Consolas, monospace; font-size: 11px; color: #17201a; }
+  .pk { color: #b5761a; font-size: 9px; letter-spacing: 0.06em; }
+  .c3, .c4 { color: #6f7a70; }
+  .idxline { margin: 6px 0 0; font-size: 10.5px; color: #6f7a70; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="fig-head">
+    <div>
+      <span class="no">TABLES</span>
+      <h1>数据库表设计</h1>
+    </div>
+    <p class="note">共 10 张表，字段与实际建表 SQL（sql/init.sql）一致。<br>
+    选中整页复制，粘到 Word 会自动保留表格结构。</p>
+  </div>
+
+  <p class="hint">用法：在浏览器打开本页 → Ctrl+A 全选 → Ctrl+C → 粘到 Word 目标位置，表格会直接成型，无需手画。</p>
+
+  
+  <section class="tbl-block">
+    <h3><span class="idx">表 1</span>edu_teacher<em>讲师</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">讲师ID</td></tr><tr><td class="c1"><code>name</code></td><td class="c2"><code>VARCHAR(20)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">讲师姓名</td></tr><tr><td class="c1"><code>intro</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">讲师简介</td></tr><tr><td class="c1"><code>career</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">讲师资历/职业经历</td></tr><tr><td class="c1"><code>level</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>1</code></td><td class="c5">1=讲师 2=高级讲师</td></tr><tr><td class="c1"><code>avatar</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">头像URL（OSS）</td></tr><tr><td class="c1"><code>sort</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">排序，越小越前</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5">创建时间</td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5">更新时间</td></tr><tr><td class="c1"><code>is_deleted</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">逻辑删除 0=正常 1=删除</td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_name(name)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 2</span>edu_subject<em>课程分类</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">分类ID</td></tr><tr><td class="c1"><code>title</code></td><td class="c2"><code>VARCHAR(20)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">分类名称</td></tr><tr><td class="c1"><code>parent_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">父ID，0=一级分类</td></tr><tr><td class="c1"><code>sort</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">排序</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_parent_id(parent_id)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 3</span>edu_course<em>课程</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">课程ID</td></tr><tr><td class="c1"><code>teacher_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">讲师ID</td></tr><tr><td class="c1"><code>subject_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">二级分类ID</td></tr><tr><td class="c1"><code>subject_parent_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">一级分类ID（冗余，便于筛选）</td></tr><tr><td class="c1"><code>title</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">课程标题</td></tr><tr><td class="c1"><code>price</code></td><td class="c2"><code>DECIMAL(10,2)</code></td><td class="c3">否</td><td class="c4"><code>0.00</code></td><td class="c5">价格</td></tr><tr><td class="c1"><code>lesson_num</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">课时数</td></tr><tr><td class="c1"><code>cover</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">封面URL（OSS）</td></tr><tr><td class="c1"><code>status</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">0=未发布 1=已发布</td></tr><tr><td class="c1"><code>buy_count</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">购买数（演示用）</td></tr><tr><td class="c1"><code>view_count</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">浏览数</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>is_deleted</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_teacher(teacher_id)；idx_subject(subject_id)；idx_parent(subject_parent_id)；idx_status(status)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 4</span>edu_course_description<em>课程简介</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">简介ID</td></tr><tr><td class="c1"><code>course_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">课程ID</td></tr><tr><td class="c1"><code>description</code></td><td class="c2"><code>TEXT</code></td><td class="c3">是</td><td class="c4"><code>—</code></td><td class="c5">课程详细介绍</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：UNIQUE uk_course_id(course_id)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 5</span>edu_chapter<em>课程章节</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">章节ID</td></tr><tr><td class="c1"><code>course_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">课程ID</td></tr><tr><td class="c1"><code>title</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">章节标题</td></tr><tr><td class="c1"><code>sort</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">排序</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_course(course_id)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 6</span>edu_section<em>课程小节</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">小节ID</td></tr><tr><td class="c1"><code>course_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">课程ID</td></tr><tr><td class="c1"><code>chapter_id</code></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">章节ID</td></tr><tr><td class="c1"><code>title</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">小节标题</td></tr><tr><td class="c1"><code>duration</code></td><td class="c2"><code>VARCHAR(20)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">时长，如 12:30</td></tr><tr><td class="c1"><code>sort</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">排序</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_chapter(chapter_id)；idx_course(course_id)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 7</span>crm_banner<em>首页轮播</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">轮播ID</td></tr><tr><td class="c1"><code>title</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">标题</td></tr><tr><td class="c1"><code>image_url</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">图片URL（OSS）</td></tr><tr><td class="c1"><code>link_url</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">跳转地址</td></tr><tr><td class="c1"><code>sort</code></td><td class="c2"><code>INT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">排序</td></tr><tr><td class="c1"><code>is_deleted</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5">逻辑删除</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 8</span>sys_user<em>后台账号</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">主键</td></tr><tr><td class="c1"><code>username</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">登录名</td></tr><tr><td class="c1"><code>password</code></td><td class="c2"><code>VARCHAR(100)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">BCrypt 密码</td></tr><tr><td class="c1"><code>nickname</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">昵称</td></tr><tr><td class="c1"><code>avatar</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">头像</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>is_deleted</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：UNIQUE uk_username(username)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 9</span>ucenter_member<em>前台学员</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">学员ID</td></tr><tr><td class="c1"><code>nickname</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">昵称</td></tr><tr><td class="c1"><code>mobile</code></td><td class="c2"><code>VARCHAR(20)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">手机号（唯一）</td></tr><tr><td class="c1"><code>password</code></td><td class="c2"><code>VARCHAR(100)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">BCrypt 密码</td></tr><tr><td class="c1"><code>avatar</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">头像</td></tr><tr><td class="c1"><code>gmt_create</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>gmt_modified</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr><tr><td class="c1"><code>is_deleted</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>0</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：UNIQUE uk_mobile(mobile)</p>
+  </section>
+  <section class="tbl-block">
+    <h3><span class="idx">表 10</span>sys_login_log<em>登录日志</em></h3>
+    <table>
+      <thead><tr><th style="width:20%">字段</th><th style="width:17%">类型</th><th style="width:8%">可空</th><th style="width:15%">默认值</th><th>说明</th></tr></thead>
+      <tbody><tr><td class="c1"><code>id</code> <b class="pk">PK</b></td><td class="c2"><code>BIGINT</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">主键</td></tr><tr><td class="c1"><code>username</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">否</td><td class="c4"><code>—</code></td><td class="c5">登录名</td></tr><tr><td class="c1"><code>user_type</code></td><td class="c2"><code>VARCHAR(10)</code></td><td class="c3">否</td><td class="c4"><code>admin</code></td><td class="c5">admin/member</td></tr><tr><td class="c1"><code>ip</code></td><td class="c2"><code>VARCHAR(50)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">登录IP</td></tr><tr><td class="c1"><code>user_agent</code></td><td class="c2"><code>VARCHAR(500)</code></td><td class="c3">是</td><td class="c4"><code>NULL</code></td><td class="c5">UA</td></tr><tr><td class="c1"><code>success</code></td><td class="c2"><code>TINYINT</code></td><td class="c3">否</td><td class="c4"><code>1</code></td><td class="c5">1=成功 0=失败</td></tr><tr><td class="c1"><code>login_time</code></td><td class="c2"><code>DATETIME</code></td><td class="c3">否</td><td class="c4"><code>CURRENT_TIMESTAMP</code></td><td class="c5"></td></tr></tbody>
+    </table>
+    <p class="idxline">索引：idx_username(username)；idx_time(login_time)</p>
+  </section>
+</div>
+</body>
+</html>

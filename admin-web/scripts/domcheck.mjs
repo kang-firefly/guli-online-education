@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({executablePath:'C://Program Files\\Google\\Chrome\\Application\\chrome.exe', headless:'new', args:['--no-sandbox']})
+const p = await b.newPage()
+await p.setViewport({width:390,height:844})
+await p.goto('http://127.0.0.1:5173/login',{waitUntil:'networkidle2'})
+await p.evaluate(() => localStorage.setItem('guli_admin_token','x'))
+await p.goto('http://127.0.0.1:5173/teacher',{waitUntil:'networkidle2'})
+await new Promise(r=>setTimeout(r,1500))
+const heads = await p.$$eval('.el-table__header th', els => els.map(e=>e.innerText.trim()))
+const w = await p.evaluate(()=>document.documentElement.clientWidth)
+console.log('viewport', w, 'headers:', JSON.stringify(heads))
+await b.close()

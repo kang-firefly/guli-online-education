@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+</head>
+<body>
+<div class="canvas">
+  <div class="fig-head">
+    <div>
+      <span class="no">FIG. 06</span>
+      <h1>类图（构件级设计）</h1>
+    </div>
+    <p class="note">
+      按 Controller → ServiceImpl → Mapper → Entity 四层各取一条代表链路，箭头表示依赖方向。<br>
+      其余模块结构完全同构，只是实体与业务方法不同。
+    </p>
+  </div>
+
+  <svg viewBox="0 0 1448 940" width="1448" height="940" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="dep" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6f7a70"/>
+      </marker>
+      <style>
+        .cls { fill: #ffffff; stroke: #a8a294; stroke-width: 1.1; }
+        .hdr-c { fill: #fdf7ea; }
+        .hdr-s { fill: #f2f6f3; }
+        .hdr-m { fill: #f4f1e9; }
+        .hdr-e { fill: #f7f7f5; }
+        .name { font-family: 'Serif SC', serif; font-size: 13px; fill: #17201a; }
+        .stereo { font-size: 9.5px; fill: #b5761a; font-family: Consolas, monospace; }
+        .mth { font-family: Consolas, monospace; font-size: 10px; fill: #3c463d; }
+        .fld { font-family: Consolas, monospace; font-size: 10px; fill: #6f7a70; }
+        .layer { font-size: 10.5px; fill: #6f7a70; letter-spacing: 0.14em; }
+        .ann { font-size: 10px; fill: #6f7a70; }
+      </style>
+    </defs>
+
+    <!-- 层标签 -->
+    <text x="40" y="62" class="layer">CONTROLLER 层</text>
+    <text x="40" y="262" class="layer">SERVICE 层（接口 + 实现）</text>
+    <text x="40" y="462" class="layer">MAPPER 层</text>
+    <text x="40" y="662" class="layer">ENTITY 层</text>
+
+    <!-- ================= 依赖箭头 ================= -->
+    <g stroke="#6f7a70" stroke-width="1.1" stroke-dasharray="5 4">
+      <line x1="190" y1="192" x2="190" y2="276" marker-end="url(#dep)"/>
+      <line x1="540" y1="192" x2="540" y2="276" marker-end="url(#dep)"/>
+      <line x1="890" y1="192" x2="890" y2="276" marker-end="url(#dep)"/>
+      <line x1="1240" y1="192" x2="1240" y2="276" marker-end="url(#dep)"/>
+
+      <line x1="190" y1="392" x2="190" y2="476" marker-end="url(#dep)"/>
+      <line x1="540" y1="392" x2="540" y2="476" marker-end="url(#dep)"/>
+      <line x1="890" y1="392" x2="890" y2="476" marker-end="url(#dep)"/>
+      <line x1="1240" y1="392" x2="1240" y2="476" marker-end="url(#dep)"/>
+
+      <line x1="190" y1="592" x2="190" y2="676" marker-end="url(#dep)"/>
+      <line x1="540" y1="592" x2="540" y2="676" marker-end="url(#dep)"/>
+      <line x1="890" y1="592" x2="890" y2="676" marker-end="url(#dep)"/>
+      <line x1="1240" y1="592" x2="1240" y2="676" marker-end="url(#dep)"/>
+    </g>
+
+    <text x="198" y="240" class="ann">«use»</text>
+    <text x="548" y="240" class="ann">«use»</text>
+    <text x="898" y="240" class="ann">«use»</text>
+    <text x="1248" y="240" class="ann">«use»</text>
+
+    <!-- ================= 第 1 行 Controller ================= -->
+    <g>
+      <rect x="40" y="80" width="300" height="112" class="cls"/>
+      <rect x="40" y="80" width="300" height="32" class="hdr-c"/>
+      <text x="52" y="101" class="name">LoginController</text>
+      <text x="328" y="101" text-anchor="end" class="stereo">«controller»</text>
+      <text x="52" y="132" class="mth">+ login(LoginDTO): LoginVO</text>
+      <text x="52" y="149" class="mth">+ logout(): Result</text>
+      <text x="52" y="166" class="mth">+ info(): LoginUser</text>
+      <text x="52" y="183" class="fld">@RestController /admin</text>
+    </g>
+
+    <g>
+      <rect x="390" y="80" width="300" height="112" class="cls"/>
+      <rect x="390" y="80" width="300" height="32" class="hdr-c"/>
+      <text x="402" y="101" class="name">TeacherController</text>
+      <text x="678" y="101" text-anchor="end" class="stereo">«controller»</text>
+      <text x="402" y="132" class="mth">+ page(TeacherQueryDTO)</text>
+      <text x="402" y="149" class="mth">+ create/update(TeacherSaveDTO)</text>
+      <text x="402" y="166" class="mth">+ remove(id) / removeBatch(ids)</text>
+      <text x="402" y="183" class="fld">@RestController /admin/teacher</text>
+    </g>
+
+    <g>
+      <rect x="740" y="80" width="300" height="112" class="cls"/>
+      <rect x="740" y="80" width="300" height="32" class="hdr-c"/>
+      <text x="752" y="101" class="name">CourseController</text>
+      <text x="1028" y="101" text-anchor="end" class="stereo">«controller»</text>
+      <text x="752" y="132" class="mth">+ page(CourseQueryDTO)</text>
+      <text x="752" y="149" class="mth">+ detail(id): CourseDetailVO</text>
+      <text x="752" y="166" class="mth">+ publish(id) / offline(id)</text>
+      <text x="752" y="183" class="fld">@RestController /admin/course</text>
+    </g>
+
+    <g>
+      <rect x="1090" y="80" width="300" height="112" class="cls"/>
+      <rect x="1090" y="80" width="300" height="32" class="hdr-c"/>
+      <text x="1102" y="101" class="name">MemberController</text>
+      <text x="1378" y="101" text-anchor="end" class="stereo">«controller»</text>
+      <text x="1102" y="132" class="mth">+ register(RegisterDTO): LoginVO</text>
+      <text x="1102" y="149" class="mth">+ login(LoginDTO): LoginVO</text>
+      <text x="1102" y="166" class="mth">+ me(): MemberVO</text>
+      <text x="1102" y="183" class="fld">@RestController /api/member</text>
+    </g>
+
+    <!-- ================= 第 2 行 ServiceImpl ================= -->
+    <g>
+      <rect x="40" y="280" width="300" height="112" class="cls"/>
+      <rect x="40" y="280" width="300" height="32" class="hdr-s"/>
+      <text x="52" y="301" class="name">SystemServiceImpl</text>
+      <text x="328" y="301" text-anchor="end" class="stereo">«service»</text>
+      <text x="52" y="332" class="fld">- sysUserMapper / loginLogMapper</text>
+      <text x="52" y="349" class="fld">- passwordEncoder / jwtUtil</text>
+      <text x="52" y="366" class="mth">+ login(dto, ip, ua): LoginVO</text>
+      <text x="52" y="383" class="fld">校验密码 → 签发 JWT → 记日志</text>
+    </g>
+
+    <g>
+      <rect x="390" y="280" width="300" height="112" class="cls"/>
+      <rect x="390" y="280" width="300" height="32" class="hdr-s"/>
+      <text x="402" y="301" class="name">TeacherServiceImpl</text>
+      <text x="678" y="301" text-anchor="end" class="stereo">«service»</text>
+      <text x="402" y="332" class="fld">- teacherMapper / courseMapper</text>
+      <text x="402" y="349" class="fld">- courseService（统计名下课程）</text>
+      <text x="402" y="366" class="mth">+ page(dto) / create / update</text>
+      <text x="402" y="383" class="fld">删除前校验名下是否仍有课程</text>
+    </g>
+
+    <g>
+      <rect x="740" y="280" width="300" height="112" class="cls"/>
+      <rect x="740" y="280" width="300" height="32" class="hdr-s"/>
+      <text x="752" y="301" class="name">CourseServiceImpl</text>
+      <text x="1028" y="301" text-anchor="end" class="stereo">«service»</text>
+      <text x="752" y="332" class="fld">- courseMapper / descriptionMapper</text>
+      <text x="752" y="349" class="fld">- chapterService / teacherMapper</text>
+      <text x="752" y="366" class="mth">+ create / update / publish</text>
+      <text x="752" y="383" class="fld">发布校验 → status=1；已发布改动退回草稿</text>
+    </g>
+
+    <g>
+      <rect x="1090" y="280" width="300" height="112" class="cls"/>
+      <rect x="1090" y="280" width="300" height="32" class="hdr-s"/>
+      <text x="1102" y="301" class="name">MemberServiceImpl</text>
+      <text x="1378" y="301" text-anchor="end" class="stereo">«service»</text>
+      <text x="1102" y="332" class="fld">- memberMapper / loginLogMapper</text>
+      <text x="1102" y="349" class="fld">- passwordEncoder / jwtUtil</text>
+      <text x="1102" y="366" class="mth">+ register(dto) / login(dto)</text>
+      <text x="1102" y="383" class="fld">手机号唯一校验；返回令牌即自动登录</text>
+    </g>
+
+    <!-- ================= 第 3 行 Mapper ================= -->
+    <g>
+      <rect x="40" y="480" width="300" height="112" class="cls"/>
+      <rect x="40" y="480" width="300" height="32" class="hdr-m"/>
+      <text x="52" y="501" class="name">SysUserMapper</text>
+      <text x="328" y="501" text-anchor="end" class="stereo">«interface»</text>
+      <text x="52" y="532" class="mth">extends BaseMapper&lt;SysUser&gt;</text>
+      <text x="52" y="549" class="fld">单表 CRUD，无自定义 SQL</text>
+    </g>
+
+    <g>
+      <rect x="390" y="480" width="300" height="112" class="cls"/>
+      <rect x="390" y="480" width="300" height="32" class="hdr-m"/>
+      <text x="402" y="501" class="name">TeacherMapper</text>
+      <text x="678" y="501" text-anchor="end" class="stereo">«interface»</text>
+      <text x="402" y="532" class="mth">extends BaseMapper&lt;Teacher&gt;</text>
+      <text x="402" y="549" class="fld">分页与条件由 Wrapper 拼接</text>
+    </g>
+
+    <g>
+      <rect x="740" y="480" width="300" height="112" class="cls"/>
+      <rect x="740" y="480" width="300" height="32" class="hdr-m"/>
+      <text x="752" y="501" class="name">CourseMapper</text>
+      <text x="1028" y="501" text-anchor="end" class="stereo">«interface»</text>
+      <text x="752" y="532" class="mth">extends BaseMapper&lt;Course&gt;</text>
+      <text x="752" y="549" class="fld">同类：ChapterMapper / SectionMapper</text>
+    </g>
+
+    <g>
+      <rect x="1090" y="480" width="300" height="112" class="cls"/>
+      <rect x="1090" y="480" width="300" height="32" class="hdr-m"/>
+      <text x="1102" y="501" class="name">MemberMapper</text>
+      <text x="1378" y="501" text-anchor="end" class="stereo">«interface»</text>
+      <text x="1102" y="532" class="mth">extends BaseMapper&lt;Member&gt;</text>
+      <text x="1102" y="549" class="fld">按 mobile 唯一索引查询</text>
+    </g>
+
+    <!-- ================= 第 4 行 Entity ================= -->
+    <g>
+      <rect x="40" y="680" width="300" height="112" class="cls"/>
+      <rect x="40" y="680" width="300" height="32" class="hdr-e"/>
+      <text x="52" y="701" class="name">SysUser</text>
+      <text x="328" y="701" text-anchor="end" class="stereo">«entity»</text>
+      <text x="52" y="732" class="fld">- id: Long</text>
+      <text x="52" y="749" class="fld">- username / password / nickname</text>
+      <text x="52" y="766" class="fld">@TableName("sys_user")</text>
+    </g>
+
+    <g>
+      <rect x="390" y="680" width="300" height="112" class="cls"/>
+      <rect x="390" y="680" width="300" height="32" class="hdr-e"/>
+      <text x="402" y="701" class="name">Teacher</text>
+      <text x="678" y="701" text-anchor="end" class="stereo">«entity»</text>
+      <text x="402" y="732" class="fld">- id / name / career / intro</text>
+      <text x="402" y="749" class="fld">- level / avatar / sort</text>
+      <text x="402" y="766" class="fld">@TableLogic is_deleted</text>
+    </g>
+
+    <g>
+      <rect x="740" y="680" width="300" height="112" class="cls"/>
+      <rect x="740" y="680" width="300" height="32" class="hdr-e"/>
+      <text x="752" y="701" class="name">Course</text>
+      <text x="1028" y="701" text-anchor="end" class="stereo">«entity»</text>
+      <text x="752" y="732" class="fld">- id / teacherId / subjectId</text>
+      <text x="752" y="749" class="fld">- subjectParentId / title / price</text>
+      <text x="752" y="766" class="fld">- cover / status / buyCount / viewCount</text>
+    </g>
+
+    <g>
+      <rect x="1090" y="680" width="300" height="112" class="cls"/>
+      <rect x="1090" y="680" width="300" height="32" class="hdr-e"/>
+      <text x="1102" y="701" class="name">Member</text>
+      <text x="1378" y="701" text-anchor="end" class="stereo">«entity»</text>
+      <text x="1102" y="732" class="fld">- id / nickname / mobile</text>
+      <text x="1102" y="749" class="fld">- password（BCrypt 摘要）</text>
+      <text x="1102" y="766" class="fld">@TableName("ucenter_member")</text>
+    </g>
+
+    <!-- 说明 -->
+    <rect x="40" y="830" width="1350" height="86" fill="#f7faf8" stroke="#cfc9ba" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="60" y="856" class="stereo">设计要点</text>
+    <text x="60" y="880" class="mth">1. Controller 只做参数绑定与 Result 封装，不出现业务判断；2. Impl 承担业务规则与 @Transactional 边界，不接触 HttpServletRequest；</text>
+    <text x="60" y="900" class="mth">3. 跨模块调用走 Service 接口（如 TeacherServiceImpl 依赖 CourseService），不直接跨模块访问对方 Mapper；4. 对外只返回 VO，实体不暴露到 Web 层。</text>
+  </svg>
+
+  <div class="legend">
+    <span>虚线箭头 = 依赖</span>
+    <span>«controller» / «service» / «interface» / «entity» 为 UML 构造型</span>
+    <span>+ 公有方法　- 私有字段</span>
+  </div>
+</div>
+</body>
+</html>

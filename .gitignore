@@ -1,0 +1,65 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### 本地私有配置（含 OSS AK/SK、数据库密码，禁止提交） ###
+src/main/resources/application-local.yml
+src/main/resources/application-local.properties
+*.local.yml
+
+### 工具与临时目录 ###
+.workbuddy/
+logs/
+*.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### 前端依赖与构建产物 ###
+node_modules/
+dist/
+admin-web/dist/
+portal-web/dist/
+
+### 部署产物与含凭据的配置（严禁提交） ###
+deploy/*.tar.gz
+deploy/pkg/
+deploy/application-prod.yml
+deploy/admin-credential.txt
+
+### 报告生成中间产物 ###
+report-assets/out/
+report-assets/fonts/
+*.docx
+*.doc
+
+### 本地数据库备份 ###
+deploy/*.sql
+report-assets/out/*.sql

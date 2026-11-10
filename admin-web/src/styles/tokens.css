@@ -1,0 +1,77 @@
+/* ==========================================================================
+   设计令牌 · 杂志编辑风（Editorial）
+   方向：米白纸感底 / 深墨绿主色 / 琥珀强调 / 发丝线 / 大留白 / 衬线大标题
+   ========================================================================== */
+
+:root {
+  /* ---- 色彩 ---- */
+  --paper:        #f5f1e7;   /* 页面底色：暖白纸 */
+  --paper-2:      #fffdf7;   /* 卡片/面板 */
+  --paper-3:      #efe9dc;   /* 次级填充 */
+  --ink:          #1a211b;   /* 正文（暖调近黑，不用纯黑） */
+  --ink-2:        #3d473e;   /* 次级文字 */
+  --muted:        #6f7a70;   /* 说明文字 */
+  --muted-2:      #99a29a;   /* 占位/禁用 */
+
+  --green:        #123a2c;   /* 主色：深墨绿 */
+  --green-2:      #1c5240;   /* 主色亮一档 */
+  --green-dim:    #0d2a20;   /* 侧边栏底 */
+  --amber:        #b07d2b;   /* 唯一强调色 */
+  --amber-2:      #d0a24a;
+  --danger:       #9b2c2c;
+  --success:      #2f6b4f;
+
+  --line:         rgba(26, 33, 27, 0.14);   /* 发丝线 */
+  --line-strong:  rgba(26, 33, 27, 0.28);
+  --line-invert:  rgba(255, 253, 247, 0.16);
+
+  /* ---- 字体 ---- */
+  --font-display: "Playfair Display", "Noto Serif SC", "Songti SC", Georgia, serif;
+  --font-serif:   "Noto Serif SC", "Songti SC", Georgia, serif;
+  --font-body:    "Noto Sans SC", "Microsoft YaHei", -apple-system, sans-serif;
+  --font-mono:    "Consolas", "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* ---- 字阶（1.25 比例） ---- */
+  --fs-2xs: 11px;
+  --fs-xs:  12px;
+  --fs-sm:  13px;
+  --fs-md:  15px;
+  --fs-lg:  17px;
+  --fs-xl:  21px;
+  --fs-2xl: 26px;
+  --fs-3xl: 33px;
+  --fs-4xl: 42px;
+  --fs-display: 58px;
+
+  /* ---- 间距梯度 ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* ---- 圆角（编辑风：克制的直角） ---- */
+  --r-xs: 2px;
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-pill: 999px;
+
+  /* ---- 阴影（带环境色，不用纯黑） ---- */
+  --shadow-1: 0 1px 2px rgba(26, 33, 27, 0.05);
+  --shadow-2: 0 8px 24px rgba(26, 33, 27, 0.08);
+  --shadow-3: 0 24px 64px rgba(26, 33, 27, 0.14);
+
+  /* ---- 动效 ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+
+  /* ---- 布局 ---- */
+  --sidebar-w: 236px;
+  --topbar-h: 68px;
+}

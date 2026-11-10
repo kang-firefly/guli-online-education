@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8">
+<style>body{margin:0;background:#fff;font-family:"Microsoft YaHei"} .box{padding:12px}</style>
+<div class="box" id="host"></div>
+<script src="file:///D:/code/guli/report-assets/node_modules/mermaid/dist/mermaid.min.js"></script>
+<script>
+window.mermaid.initialize({ startOnLoad: false, theme: 'default', flowchart: { htmlLabels: true, curve: 'basis' } });
+window.renderOne = async (code, id) => {
+  try {
+    await window.mermaid.parse(code);
+  } catch (e) {
+    return { ok: false, err: String(e.message || e) };
+  }
+  try {
+    const { svg } = await window.mermaid.render(id, code);
+    document.getElementById('host').innerHTML = svg;
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, err: 'render: ' + String(e.message || e) };
+  }
+};
+</script>

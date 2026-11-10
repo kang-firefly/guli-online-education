@@ -1,0 +1,9 @@
+{
+  "name": "guli-report-assets",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "mermaid": "^12.2.0",
+    "puppeteer-core": "^23.11.1"
+  }
+}

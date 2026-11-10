@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+</head>
+<body>
+<div class="canvas">
+  <div class="fig-head">
+    <div>
+      <span class="no">FIG. 04</span>
+      <h1>活动图 · 课程发布流程</h1>
+    </div>
+    <p class="note">
+      对应 UC-B15「课程最终发布」。左侧色条区分执行者：<b>琥珀</b>= 管理员操作，<b>墨绿</b>= 系统处理。<br>
+      两个判断节点是发布失败的唯一出口：必填项不齐、大纲为空。
+    </p>
+  </div>
+
+  <svg viewBox="0 0 1448 1260" width="1448" height="1260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a4" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6f7a70"/>
+      </marker>
+      <style>
+        .node { fill: #ffffff; stroke: #6f7a70; stroke-width: 1.2; }
+        .node-a { fill: #fdf7ea; stroke: #b5761a; stroke-width: 1.3; }
+        .node-s { fill: #f2f6f3; stroke: #123a2c; stroke-width: 1.3; }
+        .main { font-family: 'Serif SC', serif; font-size: 14px; fill: #17201a; }
+        .sub { font-size: 11px; fill: #6f7a70; }
+        .cond { font-family: 'Serif SC', serif; font-size: 13px; fill: #17201a; }
+        .edge { stroke: #6f7a70; stroke-width: 1.2; fill: none; }
+        .elabel { font-size: 11px; fill: #9b2c2c; }
+        .elabel-ok { font-size: 11px; fill: #2f6b4f; }
+      </style>
+    </defs>
+
+    <!-- ============ 连线（先画） ============ -->
+    <g>
+      <!-- 主干 -->
+      <line x1="724" y1="76"  x2="724" y2="118" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="178" x2="724" y2="208" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="268" x2="724" y2="298" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="378" x2="724" y2="418" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="478" x2="724" y2="508" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="568" x2="724" y2="598" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="658" x2="724" y2="688" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="748" x2="724" y2="778" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="838" x2="724" y2="868" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="948" x2="724" y2="988" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="1048" x2="724" y2="1078" class="edge" marker-end="url(#a4)"/>
+      <line x1="724" y1="1138" x2="724" y2="1178" class="edge" marker-end="url(#a4)"/>
+
+      <!-- 判断①：否 → 回到「填写基本信息」 -->
+      <path d="M824,340 L968,340 L968,148 L908,148" class="edge" marker-end="url(#a4)"/>
+
+      <!-- 判断②：否 → 回到「编排章节与小节」 -->
+      <path d="M824,908 L968,908 L968,538 L908,538" class="edge" marker-end="url(#a4)"/>
+    </g>
+
+    <!-- ============ 节点 ============ -->
+    <!-- 开始 -->
+    <circle cx="724" cy="60" r="16" fill="#17201a"/>
+    <text x="756" y="65" class="sub">开始</text>
+
+    <!-- ① 填写基本信息（管理员） -->
+    <rect x="540" y="120" width="4" height="58" fill="#b5761a"/>
+    <rect x="544" y="120" width="360" height="58" rx="3" class="node-a"/>
+    <text x="724" y="144" text-anchor="middle" class="main">填写课程基本信息</text>
+    <text x="724" y="164" text-anchor="middle" class="sub">标题 · 讲师 · 一/二级分类 · 价格 · 课时 · 封面 · 简介</text>
+
+    <!-- ② 校验必填（系统） -->
+    <rect x="540" y="210" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="210" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="234" text-anchor="middle" class="main">必填项校验</text>
+    <text x="724" y="254" text-anchor="middle" class="sub">@Valid + 业务二次校验（分类必须为二级）</text>
+
+    <!-- 判断① -->
+    <path d="M724,300 L824,340 L724,380 L624,340 Z" class="node"/>
+    <text x="724" y="345" text-anchor="middle" class="cond">必填齐全？</text>
+    <text x="838" y="330" class="elabel">否 · 提示缺失字段</text>
+    <text x="736" y="400" class="elabel-ok">是</text>
+
+    <!-- ③ 保存草稿 -->
+    <rect x="540" y="420" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="420" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="444" text-anchor="middle" class="main">保存草稿 status = 0</text>
+    <text x="724" y="464" text-anchor="middle" class="sub">insert edu_course + edu_course_description，返回 courseId</text>
+
+    <!-- ④ 编排大纲（管理员） -->
+    <rect x="540" y="510" width="4" height="58" fill="#b5761a"/>
+    <rect x="544" y="510" width="360" height="58" rx="3" class="node-a"/>
+    <text x="724" y="534" text-anchor="middle" class="main">编排章节与小节</text>
+    <text x="724" y="554" text-anchor="middle" class="sub">新增 / 修改 / 删除，排序；删除章节需二次确认</text>
+
+    <!-- ⑤ 保存大纲 -->
+    <rect x="540" y="600" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="600" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="624" text-anchor="middle" class="main">保存大纲</text>
+    <text x="724" y="644" text-anchor="middle" class="sub">edu_chapter / edu_section 增删改，删除章节级联删小节</text>
+
+    <!-- ⑥ 确认页核对（管理员） -->
+    <rect x="540" y="690" width="4" height="58" fill="#b5761a"/>
+    <rect x="544" y="690" width="360" height="58" rx="3" class="node-a"/>
+    <text x="724" y="714" text-anchor="middle" class="main">进入确认页核对</text>
+    <text x="724" y="734" text-anchor="middle" class="sub">封面 · 分类 · 价格 · 章节小节数</text>
+
+    <!-- ⑦ 完整性校验 -->
+    <rect x="540" y="780" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="780" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="804" text-anchor="middle" class="main">发布前完整性校验</text>
+    <text x="724" y="824" text-anchor="middle" class="sub">标题 / 讲师 / 分类 / 封面 / 简介 / ≥1 章 / ≥1 节</text>
+
+    <!-- 判断② -->
+    <path d="M724,870 L824,908 L724,946 L624,908 Z" class="node"/>
+    <text x="724" y="913" text-anchor="middle" class="cond">信息完整？</text>
+    <text x="838" y="898" class="elabel">否 · 返回缺失项清单</text>
+    <text x="736" y="968" class="elabel-ok">是</text>
+
+    <!-- ⑧ 发布 -->
+    <rect x="540" y="990" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="990" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="1014" text-anchor="middle" class="main">置 status = 1，记录发布时间</text>
+    <text x="724" y="1034" text-anchor="middle" class="sub">发布成功（事务提交）</text>
+
+    <!-- ⑨ 前台可见 -->
+    <rect x="540" y="1080" width="4" height="58" fill="#123a2c"/>
+    <rect x="544" y="1080" width="360" height="58" rx="3" class="node-s"/>
+    <text x="724" y="1104" text-anchor="middle" class="main">前台列表与详情可检索</text>
+    <text x="724" y="1124" text-anchor="middle" class="sub">/api/course/page 与 /api/course/{id} 只返回 status = 1</text>
+
+    <!-- 结束 -->
+    <circle cx="724" cy="1200" r="18" fill="none" stroke="#17201a" stroke-width="1.6"/>
+    <circle cx="724" cy="1200" r="11" fill="#17201a"/>
+    <text x="756" y="1205" class="sub">结束</text>
+  </svg>
+
+  <div class="legend">
+    <span>琥珀色条 = 管理员操作</span>
+    <span>墨绿色条 = 系统处理</span>
+    <span>红色文字 = 校验失败路径</span>
+    <span>两个回环保证：填错不用重来，改完原步骤即可继续</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# 复制为 application-local.yml 后填入自己的真实值（application-local.yml 已被 git 忽略）
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://<服务器IP>:3306/guli?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: <数据库密码>
+
+guli:
+  oss:
+    access-key-id: <AccessKeyId>
+    access-key-secret: <AccessKeySecret>

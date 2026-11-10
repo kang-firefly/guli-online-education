@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1153" height="798" viewBox="0 0 1153 798">
+<rect x="0" y="0" width="1153" height="798" fill="#ffffff"/>
+<rect x="184.25" y="11.00" width="429.00" height="775.50" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="29.87" font-family="SimSun, 宋体, serif" font-size="19.9" text-anchor="middle" fill="#000000" font-weight="bold">后台管理端</text>
+<rect x="646.25" y="11.00" width="341.00" height="775.50" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="29.87" font-family="SimSun, 宋体, serif" font-size="19.9" text-anchor="middle" fill="#000000" font-weight="bold">前台门户</text>
+<path d="M 101.14 394.85 L 100.99 396.65 L 100.52 398.40 L 99.75 400.04 L 98.71 401.53 L 97.43 402.81 L 95.95 403.85 L 94.31 404.61 L 92.56 405.08 L 90.75 405.24 L 88.94 405.08 L 87.19 404.61 L 85.55 403.85 L 84.07 402.81 L 82.79 401.53 L 81.75 400.04 L 80.98 398.40 L 80.51 396.65 L 80.35 394.85 L 80.51 393.04 L 80.98 391.29 L 81.75 389.65 L 82.79 388.16 L 84.07 386.88 L 85.55 385.84 L 87.19 385.08 L 88.94 384.61 L 90.75 384.45 L 92.56 384.61 L 94.31 385.08 L 95.95 385.84 L 97.43 386.88 L 98.71 388.16 L 99.75 389.65 L 100.52 391.29 L 100.99 393.04 L 101.14 394.85 M 90.75 408.21 L 90.75 443.36 M 59.95 421.57 L 121.55 421.57 M 90.75 443.36 L 61.49 476.52 M 90.75 443.36 L 120.01 476.52" fill="none" stroke="#000000" stroke-width="1.2"/>
+<text x="90.75" y="496.80" font-family="SimSun, 宋体, serif" font-size="16.8" text-anchor="middle" fill="#000000">管理员</text>
+<path d="M 1072.44 178.14 L 1072.29 179.95 L 1071.82 181.70 L 1071.05 183.34 L 1070.01 184.83 L 1068.73 186.11 L 1067.25 187.15 L 1065.61 187.91 L 1063.86 188.38 L 1062.05 188.54 L 1060.24 188.38 L 1058.49 187.91 L 1056.85 187.15 L 1055.37 186.11 L 1054.09 184.83 L 1053.05 183.34 L 1052.28 181.70 L 1051.81 179.95 L 1051.65 178.14 L 1051.81 176.34 L 1052.28 174.59 L 1053.05 172.95 L 1054.09 171.46 L 1055.37 170.18 L 1056.85 169.14 L 1058.49 168.38 L 1060.24 167.91 L 1062.05 167.75 L 1063.86 167.91 L 1065.61 168.38 L 1067.25 169.14 L 1068.73 170.18 L 1070.01 171.46 L 1071.05 172.95 L 1071.82 174.59 L 1072.29 176.34 L 1072.44 178.14 M 1062.05 191.51 L 1062.05 226.66 M 1031.25 204.88 L 1092.85 204.88 M 1062.05 226.66 L 1032.79 259.82 M 1062.05 226.66 L 1091.31 259.82" fill="none" stroke="#000000" stroke-width="1.2"/>
+<text x="1062.05" y="280.10" font-family="SimSun, 宋体, serif" font-size="16.8" text-anchor="middle" fill="#000000">访客</text>
+<path d="M 1072.44 532.35 L 1072.29 534.15 L 1071.82 535.90 L 1071.05 537.54 L 1070.01 539.03 L 1068.73 540.31 L 1067.25 541.35 L 1065.61 542.11 L 1063.86 542.58 L 1062.05 542.74 L 1060.24 542.58 L 1058.49 542.11 L 1056.85 541.35 L 1055.37 540.31 L 1054.09 539.03 L 1053.05 537.54 L 1052.28 535.90 L 1051.81 534.15 L 1051.65 532.35 L 1051.81 530.54 L 1052.28 528.79 L 1053.05 527.15 L 1054.09 525.66 L 1055.37 524.38 L 1056.85 523.34 L 1058.49 522.58 L 1060.24 522.11 L 1062.05 521.95 L 1063.86 522.11 L 1065.61 522.58 L 1067.25 523.34 L 1068.73 524.38 L 1070.01 525.66 L 1071.05 527.15 L 1071.82 528.79 L 1072.29 530.54 L 1072.44 532.35 M 1062.05 545.71 L 1062.05 580.86 M 1031.25 559.08 L 1092.85 559.08 M 1062.05 580.86 L 1032.79 614.02 M 1062.05 580.86 L 1091.31 614.02" fill="none" stroke="#000000" stroke-width="1.2"/>
+<text x="1062.05" y="634.30" font-family="SimSun, 宋体, serif" font-size="16.8" text-anchor="middle" fill="#000000">学员</text>
+<path d="M 132.55 429.00 L 220.55 115.50" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 132.55 429.00 L 220.55 222.20" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 132.55 429.00 L 220.55 328.90" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 132.55 429.00 L 220.55 435.60" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 132.55 429.00 L 220.55 542.30" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 132.55 429.00 L 220.55 649.00" fill="none" stroke="#000000" stroke-width="1"/>
+<ellipse cx="398.75" cy="115.50" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="118.50" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">登录后台</text>
+<ellipse cx="398.75" cy="222.20" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="225.20" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">讲师管理</text>
+<ellipse cx="398.75" cy="328.90" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="331.90" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">课程分类管理</text>
+<ellipse cx="398.75" cy="435.60" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="438.60" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">课程列表·下架·删除</text>
+<ellipse cx="398.75" cy="542.30" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="545.30" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">维护首页 Banner</text>
+<ellipse cx="398.75" cy="649.00" rx="178.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="398.75" y="652.00" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">发布课程（三步向导）</text>
+<path d="M 1025.75 212.30 L 972.95 88.00" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 212.30 L 972.95 170.50" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 212.30 L 972.95 253.00" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 212.30 L 972.95 335.50" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 566.50 L 972.95 484.00" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 566.50 L 972.95 566.50" fill="none" stroke="#000000" stroke-width="1"/>
+<path d="M 1025.75 566.50 L 972.95 649.00" fill="none" stroke="#000000" stroke-width="1"/>
+<ellipse cx="816.75" cy="88.00" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="91.00" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">浏览首页</text>
+<ellipse cx="816.75" cy="170.50" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="173.50" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">查看讲师列表 / 详情</text>
+<ellipse cx="816.75" cy="253.00" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="256.00" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">浏览课程列表 / 详情</text>
+<ellipse cx="816.75" cy="335.50" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="338.50" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">在线播放</text>
+<ellipse cx="816.75" cy="484.00" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="487.00" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">注册账号</text>
+<ellipse cx="816.75" cy="566.50" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="569.50" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">登录 / 退出</text>
+<ellipse cx="816.75" cy="649.00" rx="156.20" ry="34.10" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="816.75" y="652.00" font-family="SimSun, 宋体, serif" font-size="16.0" text-anchor="middle" fill="#000000">购买课程</text>
+</svg>

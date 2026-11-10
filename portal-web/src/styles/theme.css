@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Element Plus 精简主题：前台只用到消息、分页、输入、下拉等少量组件
+   ========================================================================== */
+
+:root {
+  --el-color-primary: var(--green);
+  --el-color-primary-light-3: #3a6b57;
+  --el-color-primary-light-5: #6e9382;
+  --el-color-primary-light-7: #a9c1b5;
+  --el-color-primary-light-8: #c6d6cd;
+  --el-color-primary-light-9: #e6ece7;
+  --el-color-primary-dark-2: var(--green-dim);
+  --el-color-danger: var(--danger);
+
+  --el-text-color-primary: var(--ink);
+  --el-text-color-regular: var(--ink-2);
+  --el-text-color-secondary: var(--muted);
+  --el-text-color-placeholder: var(--muted-2);
+
+  --el-bg-color: var(--paper-2);
+  --el-bg-color-overlay: var(--paper-2);
+  --el-fill-color-blank: var(--paper-2);
+  --el-fill-color-light: var(--paper-3);
+
+  --el-border-color: var(--line);
+  --el-border-color-light: var(--line);
+  --el-border-color-lighter: var(--line);
+  --el-border-color-extra-light: var(--line);
+
+  --el-border-radius-base: var(--r-xs);
+  --el-border-radius-small: var(--r-xs);
+  --el-border-radius-round: var(--r-pill);
+
+  --el-font-family: var(--font-body);
+  --el-font-size-base: var(--fs-md);
+}
+
+.el-input__wrapper,
+.el-select__wrapper {
+  box-shadow: 0 0 0 1px var(--line) inset !important;
+  border-radius: var(--r-xs);
+  background: var(--paper-2);
+  transition: box-shadow var(--dur-fast) var(--ease-out);
+}
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 1px var(--green) inset, 0 0 0 3px rgba(18, 58, 44, 0.07) !important;
+}
+
+.el-message {
+  border-radius: var(--r-xs);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-2);
+  font-size: var(--fs-sm);
+}
+
+.el-pagination {
+  --el-pagination-hover-color: var(--green);
+  font-family: var(--font-mono);
+}
+.el-pagination.is-background .el-pager li {
+  border-radius: var(--r-xs);
+  border: 1px solid var(--line);
+  background: transparent;
+}
+.el-pagination.is-background .el-pager li.is-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper-2);
+}
+
+.el-form-item__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+}

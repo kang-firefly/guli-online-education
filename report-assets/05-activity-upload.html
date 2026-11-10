@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+</head>
+<body>
+<div class="canvas">
+  <div class="fig-head">
+    <div>
+      <span class="no">FIG. 05</span>
+      <h1>活动图 · 图片上传（头像 / 封面）</h1>
+    </div>
+    <p class="note">
+      对应 UC-B07、UC-B12。前端先挡一次，后端再校验一次，OSS 只接受已通过校验的 objectKey。<br>
+      右侧两个终止节点是两条独立的失败路径，不共用回环。
+    </p>
+  </div>
+
+  <svg viewBox="0 0 1448 1000" width="1448" height="1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a5" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6f7a70"/>
+      </marker>
+      <style>
+        .node { fill: #ffffff; stroke: #6f7a70; stroke-width: 1.2; }
+        .node-a { fill: #fdf7ea; stroke: #b5761a; stroke-width: 1.3; }
+        .node-s { fill: #f2f6f3; stroke: #123a2c; stroke-width: 1.3; }
+        .main { font-family: 'Serif SC', serif; font-size: 14px; fill: #17201a; }
+        .sub { font-size: 11px; fill: #6f7a70; }
+        .cond { font-family: 'Serif SC', serif; font-size: 13px; fill: #17201a; }
+        .edge { stroke: #6f7a70; stroke-width: 1.2; fill: none; }
+        .elabel { font-size: 11px; fill: #9b2c2c; }
+        .elabel-ok { font-size: 11px; fill: #2f6b4f; }
+      </style>
+    </defs>
+
+    <!-- 连线 -->
+    <g>
+      <line x1="620" y1="70"  x2="620" y2="112" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="172" x2="620" y2="212" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="272" x2="620" y2="312" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="392" x2="620" y2="442" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="502" x2="620" y2="552" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="632" x2="620" y2="672" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="732" x2="620" y2="772" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="832" x2="620" y2="872" class="edge" marker-end="url(#a5)"/>
+      <line x1="620" y1="932" x2="620" y2="941" class="edge" marker-end="url(#a5)"/>
+
+      <!-- 失败分支 1 -->
+      <path d="M720,352 L940,352" class="edge" marker-end="url(#a5)"/>
+      <!-- 失败分支 2 -->
+      <path d="M720,592 L940,592" class="edge" marker-end="url(#a5)"/>
+    </g>
+
+    <!-- 开始 -->
+    <circle cx="620" cy="56" r="15" fill="#17201a"/>
+    <text x="650" y="61" class="sub">开始</text>
+
+    <!-- ① 选择图片 -->
+    <rect x="436" y="114" width="4" height="58" fill="#b5761a"/>
+    <rect x="440" y="114" width="360" height="58" rx="3" class="node-a"/>
+    <text x="620" y="138" text-anchor="middle" class="main">选择本地图片</text>
+    <text x="620" y="158" text-anchor="middle" class="sub">jpg / png / webp，用于头像或课程封面</text>
+
+    <!-- ② 前端校验 -->
+    <rect x="436" y="214" width="4" height="58" fill="#123a2c"/>
+    <rect x="440" y="214" width="360" height="58" rx="3" class="node-s"/>
+    <text x="620" y="238" text-anchor="middle" class="main">前端预校验</text>
+    <text x="620" y="258" text-anchor="middle" class="sub">file.type 是否为图片 · 大小 ≤ 5MB</text>
+
+    <!-- 判断① -->
+    <path d="M620,314 L720,352 L620,390 L520,352 Z" class="node"/>
+    <text x="620" y="357" text-anchor="middle" class="cond">合法？</text>
+    <text x="736" y="346" class="elabel">否 · 提示格式或超限</text>
+    <text x="632" y="410" class="elabel-ok">是</text>
+
+    <!-- ③ 后端校验 -->
+    <rect x="436" y="444" width="4" height="58" fill="#123a2c"/>
+    <rect x="440" y="444" width="360" height="58" rx="3" class="node-s"/>
+    <text x="620" y="468" text-anchor="middle" class="main">后端二次校验</text>
+    <text x="620" y="488" text-anchor="middle" class="sub">MIME + 扩展名 + 大小，拒绝脚本伪装成图片</text>
+
+    <!-- 判断② -->
+    <path d="M620,554 L720,592 L620,630 L520,592 Z" class="node"/>
+    <text x="620" y="597" text-anchor="middle" class="cond">通过？</text>
+    <text x="736" y="586" class="elabel">否 · 返回 30001</text>
+    <text x="632" y="650" class="elabel-ok">是</text>
+
+    <!-- ④ 生成 objectKey -->
+    <rect x="436" y="674" width="4" height="58" fill="#123a2c"/>
+    <rect x="440" y="674" width="360" height="58" rx="3" class="node-s"/>
+    <text x="620" y="698" text-anchor="middle" class="main">生成 objectKey</text>
+    <text x="620" y="718" text-anchor="middle" class="sub">avatar / cover / banner + UUID + 扩展名</text>
+
+    <!-- ⑤ 上传 OSS -->
+    <rect x="436" y="774" width="4" height="58" fill="#123a2c"/>
+    <rect x="440" y="774" width="360" height="58" rx="3" class="node-s"/>
+    <text x="620" y="798" text-anchor="middle" class="main">上传阿里云 OSS</text>
+    <text x="620" y="818" text-anchor="middle" class="sub">返回公网可访问 URL</text>
+
+    <!-- ⑥ 回显 -->
+    <rect x="436" y="874" width="4" height="58" fill="#b5761a"/>
+    <rect x="440" y="874" width="360" height="58" rx="3" class="node-a"/>
+    <text x="620" y="898" text-anchor="middle" class="main">表单回显预览</text>
+    <text x="620" y="918" text-anchor="middle" class="sub">URL 暂存前端，用户确认后再随表单提交</text>
+
+    <!-- 结束（成功） -->
+    <circle cx="620" cy="960" r="17" fill="none" stroke="#17201a" stroke-width="1.6"/>
+    <circle cx="620" cy="960" r="10" fill="#17201a"/>
+    <text x="650" y="965" class="sub">结束 · 保存表单时写库</text>
+
+    <!-- 失败终止① -->
+    <circle cx="955" cy="352" r="15" fill="none" stroke="#9b2c2c" stroke-width="1.5"/>
+    <circle cx="955" cy="352" r="8" fill="#9b2c2c"/>
+    <text x="955" y="392" text-anchor="middle" class="elabel">中止 · 不进后端</text>
+
+    <!-- 失败终止② -->
+    <circle cx="955" cy="592" r="15" fill="none" stroke="#9b2c2c" stroke-width="1.5"/>
+    <circle cx="955" cy="592" r="8" fill="#9b2c2c"/>
+    <text x="955" y="632" text-anchor="middle" class="elabel">中止 · 前端提示错误码</text>
+
+    <!-- 说明块 -->
+    <rect x="1040" y="700" width="380" height="200" fill="#f7faf8" stroke="#cfc9ba" stroke-width="1" stroke-dasharray="6 4"/>
+    <text x="1060" y="728" class="t-label">为什么要两次校验</text>
+    <text x="1060" y="754" class="sub">前端校验只为体验（即时反馈），</text>
+    <text x="1060" y="776" class="sub">真正生效的是后端：绕过前端即可伪造请求，</text>
+    <text x="1060" y="798" class="sub">因此后端必须独立判断类型、大小与 objectKey。</text>
+    <text x="1060" y="830" class="sub">OSS 只拿到最终 objectKey，不接触用户输入，</text>
+    <text x="1060" y="852" class="sub">路径穿越与覆盖他人文件的风险由服务端消除。</text>
+    <text x="1060" y="884" class="t-small">失败不阻断表单其它字段的编辑</text>
+  </svg>
+
+  <div class="legend">
+    <span>琥珀色 = 用户操作</span>
+    <span>墨绿色 = 服务端处理</span>
+    <span>红色终止节点 = 失败路径</span>
+  </div>
+</div>
+</body>
+</html>
