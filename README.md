@@ -124,7 +124,13 @@ guli/
 
 ## 界面
 
-![界面总览](docs/screenshots/ui-overview.png)
+前台首页、课程播放页、后台首页运营与大纲配置（四图合一）：
+
+![界面总览](https://gulia1.oss-cn-beijing.aliyuncs.com/readme/ui-overview.png)
+
+课程播放页：左侧视频区，右侧按章节分组的小节列表，当前节高亮。
+
+![课程播放页](https://gulia1.oss-cn-beijing.aliyuncs.com/readme/play.png)
 
 ## 说明
 
